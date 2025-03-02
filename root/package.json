@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": { "start": "react-scripts start",
-  "build": "react-scripts build",
+ "build": "cd frontend && npm run build && cd ../backend && npm run build",
+ "install:all": "npm install && cd frontend && npm install",
+ "heroku-postbuild": "cd frontend && npm run build",
+ "lint": "eslint .",
   
   "eject": "react-scripts eject",
     "test": "echo \"Error: no test specified\" && exit 1"
