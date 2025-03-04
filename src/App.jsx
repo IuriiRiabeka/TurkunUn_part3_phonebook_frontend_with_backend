@@ -27,7 +27,8 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
-
+console.log({persons}.persons.map(person => person.name));
+console.log({filter}.filter);
 const handleNameChange = (event) => {
   setNewName(event.target.value)
 }
@@ -65,18 +66,14 @@ const addPerson = (event) => {
   setTimeout(() => {
     setActionMessage(null)
   }, 5000)
-  .catch(error => {
-    console.error("Error adding person:", error)})
+ 
 }
 const personsToShow = filter
 ? persons.filter(person =>
     person.name.toLowerCase().includes(filter.toLowerCase())
-  )
- 
+  ) 
 
-
-: persons || [];
- console.log("personsToShow:", personsToShow);
+: persons
 
 const deletePerson = (id, name) => {
   if (!id) {
@@ -111,11 +108,7 @@ const deletePerson = (id, name) => {
       <PersonForm newName={newName} handleNameChange={handleNameChange}
        newNumber={newNumber} handleNumberChange={handleNumberChange} 
         addPerson={addPerson}/>
-        {personsToShow && personsToShow.length > 0 ? (
-  <Persons personsToShow={personsToShow} deletePerson={deletePerson} />
-) : (
-  <p>Loading...</p>
-)}
+        <Persons personsToShow={personsToShow} deletePerson={deletePerson} />
 
      
     </div>
